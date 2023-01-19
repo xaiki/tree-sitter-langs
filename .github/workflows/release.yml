@@ -30,6 +30,11 @@ jobs:
             emacs-version: '27.2'
             ext: so
             host: x86_64-unknown-linux-gnu
+          - os: ubuntu-22.04
+            bundle_os: linux
+            emacs-version: '27.2'
+            ext: so
+            host: aarch64-unknown-linux-gnu
           - os: windows-2019
             bundle_os: windows
             emacs-version: '27.2'
@@ -61,7 +66,7 @@ jobs:
 
       - run: .github/script/setup-cask
       - run: cask install
-
+      
       - run: script/compile all -target "${{ matrix.target }}"
         continue-on-error: ${{ !matrix.target }}
 
